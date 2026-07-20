@@ -7,7 +7,7 @@ export const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 bg-[#1F1B18]">
         <Image
-          src="/images/hero/hero.png"
+          src="/images/hero/hero1.png"
           alt="Aster Café Interior"
           fill
           className="object-cover object-center"
