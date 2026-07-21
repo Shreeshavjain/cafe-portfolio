@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/Navbar/Navbar";
 import { Hero } from "@/components/Hero/Hero";
+import { SignatureSection } from "@/components/Signature/SignatureSection";
+import { MenuPreviewSection } from "@/components/MenuPreview/MenuPreviewSection";
 
 export default function Home() {
   return (
@@ -7,6 +9,8 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 w-full">
         <Hero />
+        <SignatureSection />
+        <MenuPreviewSection />
       </main>
     </div>
   );

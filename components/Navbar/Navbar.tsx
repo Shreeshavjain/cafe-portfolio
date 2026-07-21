@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoImg from "@/public/branding/logo.png";
+import { AnimatedElement } from "../Hero/AnimatedElement";
 
 export const Navbar = () => {
   return (
     <header className="absolute top-0 w-full z-50 bg-transparent">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
+      <AnimatedElement yOffset={-20} duration={0.6} className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 pt-4">
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
@@ -42,7 +43,7 @@ export const Navbar = () => {
             Reservation
           </Link>
         </div>
-      </div>
+      </AnimatedElement>
     </header>
   );
 };

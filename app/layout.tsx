@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { NoiseOverlay } from "@/components/ui/noise-overlay";
 import { SmoothScrollWrapper } from "@/components/ui/smooth-scroll-wrapper";
+import { CursorFollower } from "@/components/ui/CursorFollower";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <SmoothScrollWrapper>
           <NoiseOverlay />
+          <CursorFollower />
           {children}
         </SmoothScrollWrapper>
       </body>
