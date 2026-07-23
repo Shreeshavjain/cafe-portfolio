@@ -3,7 +3,7 @@ import { FoodComposition } from "./FoodComposition";
 
 export const SignatureSection = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#FAF8F4] flex items-center overflow-hidden py-24 lg:py-32">
+    <section id="signature" className="relative w-full min-h-screen bg-[#FAF8F4] flex items-center overflow-hidden py-24 lg:py-32">
       
       {/* LAYER 2: Huge Typography Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">

@@ -5,7 +5,7 @@ import { AnimatedElement } from "./AnimatedElement";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 bg-[#1F1B18]">
         <Image
