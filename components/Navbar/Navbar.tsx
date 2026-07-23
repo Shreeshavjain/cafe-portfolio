@@ -86,43 +86,51 @@ export const Navbar = () => {
     { name: "About", id: "about" },
     { name: "Menu", id: "menu" },
     { name: "Chefs", id: "chefs" },
+    { name: "Gallery", id: "gallery" },
+    { name: "Testimonials", id: "testimonials" },
   ];
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${
+        isScrolled 
+          ? "bg-background/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.03)] border-b border-black/5" 
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <AnimatedElement yOffset={-20} duration={0.6} className={`mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? "h-20" : "h-24 pt-4"}`}>
+      <AnimatedElement yOffset={-20} duration={0.8} className={`mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-500 ease-in-out ${isScrolled ? "h-20" : "h-28 pt-6"}`}>
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="#hero" onClick={(e) => handleClick(e, "hero")}>
+          <Link href="#hero" onClick={(e) => handleClick(e, "hero")} className="outline-none">
             <Image 
               src={logoImg} 
               alt="Aster Café" 
-              width={isScrolled ? 150 : 180} 
-              height={isScrolled ? 37 : 45} 
-              className={`object-contain transition-all duration-300 ${isLight ? "brightness-0" : ""}`}
+              width={isScrolled ? 140 : 170} 
+              height={isScrolled ? 35 : 42} 
+              className={`object-contain transition-all duration-500 ease-in-out ${isLight ? "brightness-0" : "brightness-100"}`}
               priority
             />
           </Link>
         </div>
 
         {/* Navigation links (Desktop only) */}
-        <nav className="hidden md:flex md:gap-x-12">
+        <nav className="hidden lg:flex lg:gap-x-10">
           {navItems.map((item) => (
             <Link 
               key={item.name}
               href={`#${item.id}`} 
               onClick={(e) => handleClick(e, item.id)}
-              className={`text-sm font-medium transition-colors uppercase tracking-widest ${
+              className={`relative text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-300 group outline-none ${
                 activeSection === item.id 
                   ? "text-crema-orange" 
-                  : `${textColor} ${hoverColor}`
+                  : `${textColor} hover:text-crema-orange`
               }`}
             >
               {item.name}
+              {/* Elegant underline animation for hover/active */}
+              <span className={`absolute -bottom-2 left-0 h-[1px] bg-crema-orange transition-all duration-300 ${
+                activeSection === item.id ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+              }`} />
             </Link>
           ))}
         </nav>
@@ -134,7 +142,7 @@ export const Navbar = () => {
             onClick={(e) => handleClick(e, "contact")}
             className={`inline-flex items-center justify-center border ${
               activeSection === "contact" ? "border-crema-orange bg-crema-orange text-white" : `${btnBorder} ${btnBg} ${btnText}`
-            } px-6 py-2.5 text-sm font-medium hover:bg-crema-orange hover:border-crema-orange hover:text-white transition-colors uppercase tracking-widest`}
+            } px-7 py-3 text-xs font-semibold hover:bg-crema-orange hover:border-crema-orange hover:text-white transition-all duration-500 uppercase tracking-[0.15em] outline-none shadow-sm hover:shadow-md`}
           >
             Reservation
           </Link>

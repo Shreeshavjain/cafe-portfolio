@@ -2,20 +2,21 @@
 
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-const FacebookIcon = ({ size = 20, strokeWidth = 1.5 }) => (
+import Link from "next/link";
+
+const FacebookIcon = ({ size = 24, strokeWidth = 1.5 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
   </svg>
 );
 
-const InstagramIcon = ({ size = 20, strokeWidth = 1.5 }) => (
+const InstagramIcon = ({ size = 24, strokeWidth = 1.5 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
   </svg>
 );
-import Link from "next/link";
 
 interface ChefCardProps {
   chef: {
@@ -34,118 +35,82 @@ interface ChefCardProps {
   };
 }
 
-// Framer motion variants
-const cardVariants: Variants = {
-  rest: { },
-  hover: { }
-};
-
 const imageVariants: Variants = {
-  rest: { scale: 1, filter: "brightness(1)" },
+  rest: { opacity: 1, scale: 1 },
   hover: { 
-    scale: 1.05, 
-    filter: "brightness(1.1)",
-    transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] } 
+    opacity: 0.92,
+    scale: 1.02, 
+    transition: { duration: 0.3, ease: "easeOut" } 
   }
 };
 
-const overlayVariants: Variants = {
-  rest: { y: "100%", opacity: 0 },
+const panelVariants: Variants = {
+  rest: { y: 15, opacity: 0 },
   hover: { 
-    y: "0%", 
+    y: 0, 
     opacity: 1,
-    transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] }
+    transition: { duration: 0.3, ease: "easeOut" }
   }
-};
-
-const iconVariants: Variants = {
-  rest: { y: 20, opacity: 0 },
-  hover: (i: number) => ({
-    y: 0,
-    opacity: 1,
-    transition: { 
-      duration: 0.3, 
-      ease: [0.33, 1, 0.68, 1], 
-      delay: i * 0.05 + 0.1 
-    }
-  })
 };
 
 export function ChefCard({ chef }: ChefCardProps) {
   return (
     <motion.div
-      className="relative overflow-hidden rounded-2xl shadow-lg flex flex-col h-[500px] w-full bg-card"
-      initial="hidden"
-      whileInView="rest"
+      className="relative flex flex-col h-[550px] lg:h-[600px] w-full overflow-hidden group"
+      initial="rest"
       whileHover="hover"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        rest: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-        hover: { opacity: 1, y: 0 }
-      }}
+      animate="rest"
     >
-      {/* Background Image */}
-      <motion.div className="absolute inset-0 w-full h-full" variants={imageVariants}>
+      {/* Background Image Container */}
+      <motion.div 
+        className="flex-1 w-full flex items-end justify-center overflow-hidden z-0" 
+        variants={imageVariants}
+      >
         <Image
           src={chef.imageUrl}
           alt={chef.name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          width={500}
+          height={750}
+          className="w-auto h-full object-contain object-bottom"
           priority={false}
         />
       </motion.div>
 
-      {/* Hidden Overlay Information */}
+      {/* Floating Glass Panel (Over the waist/folded arms) */}
       <motion.div
-        className="absolute inset-x-0 bottom-0 flex flex-col justify-end overflow-hidden z-10"
-        variants={overlayVariants}
+        className="absolute inset-x-0 mx-auto top-[39%] w-[65%] flex flex-col items-center text-center py-5 px-4 z-20 pointer-events-none group-hover:pointer-events-auto bg-[rgba(253,251,247,0.72)] backdrop-blur-3xl rounded-[18px] shadow-[0_0_40px_rgba(185,109,64,0.12)] border border-white/20"
+        variants={panelVariants}
       >
-        <div className="bg-[#1F1A17]/80 backdrop-blur-md border-t border-[#1F1A17]/20 p-6 flex flex-col gap-3">
-          
-          <div className="flex justify-between items-start">
-            <div>
-              <h3 className="font-heading text-3xl text-[#FDFBF7] drop-shadow-md">
-                {chef.name}
-              </h3>
-              <p className="text-[#B96D40] font-medium text-sm tracking-wider uppercase mt-1">
-                {chef.role}
-              </p>
-            </div>
-          </div>
+        <p className="text-espresso font-bold text-sm italic line-clamp-2 leading-relaxed tracking-wide">
+          "{chef.description}"
+        </p>
 
-          <div className="text-[#FDFBF7]/90 text-sm space-y-1 font-sans">
-            <p><span className="text-[#B96D40] font-medium">Cuisine:</span> {chef.cuisine}</p>
-            <p><span className="text-[#B96D40] font-medium">Experience:</span> {chef.experience}</p>
-            <p><span className="text-[#B96D40] font-medium">Speciality:</span> {chef.speciality}</p>
-          </div>
-
-          <p className="text-[#FDFBF7]/80 text-sm italic mt-2 leading-relaxed font-sans line-clamp-3">
-            "{chef.description}"
-          </p>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-4 pt-4 border-t border-[#FDFBF7]/20">
-            <motion.div custom={0} variants={iconVariants}>
-              <Link 
-                href={chef.social.facebook}
-                className="text-[#FDFBF7] hover:text-[#B96D40] transition-colors duration-300"
-              >
-                <FacebookIcon size={20} strokeWidth={1.5} />
-              </Link>
-            </motion.div>
-            <motion.div custom={1} variants={iconVariants}>
-              <Link 
-                href={chef.social.instagram}
-                className="text-[#FDFBF7] hover:text-[#B96D40] transition-colors duration-300"
-              >
-                <InstagramIcon size={20} strokeWidth={1.5} />
-              </Link>
-            </motion.div>
-          </div>
+        {/* Social Icons */}
+        <div className="flex gap-6 mt-4 pt-3 border-t border-[#B96D40]/15 w-[70%] justify-center">
+          <Link 
+            href={chef.social.instagram}
+            className="text-espresso hover:text-crema-orange hover:-translate-y-1 hover:scale-110 hover:opacity-90 transition-all duration-300"
+          >
+            <InstagramIcon size={24} strokeWidth={1.5} />
+          </Link>
+          <Link 
+            href={chef.social.facebook}
+            className="text-espresso hover:text-crema-orange hover:-translate-y-1 hover:scale-110 hover:opacity-90 transition-all duration-300"
+          >
+            <FacebookIcon size={24} strokeWidth={1.5} />
+          </Link>
         </div>
       </motion.div>
+
+      {/* Permanent Footer */}
+      <div className="w-full flex flex-col items-center text-center pt-6 pb-2 z-10">
+        <h3 className="font-heading text-2xl lg:text-3xl text-espresso font-bold tracking-wide">
+          {chef.name}
+        </h3>
+        <p className="text-crema-orange font-bold text-xs lg:text-sm tracking-[0.2em] uppercase mt-2">
+          {chef.role}
+        </p>
+      </div>
     </motion.div>
   );
 }

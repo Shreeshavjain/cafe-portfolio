@@ -11,7 +11,7 @@ const CHEFS_DATA = [
     experience: "18 Years Experience",
     speciality: "Wood-fired Pizza & Handmade Pasta",
     description: "Known for combining authentic Italian recipes with modern presentation and locally sourced ingredients.",
-    imageUrl: "/images/chefs/chef-1.png",
+    imageUrl: "/images/chefs/chef1.png",
     social: {
       facebook: "#",
       instagram: "#",
@@ -25,7 +25,7 @@ const CHEFS_DATA = [
     experience: "12 Years Experience",
     speciality: "Artisanal Entremets & Sugar Work",
     description: "An artist of the sweet kitchen, blending delicate Asian flavors with classic French pastry techniques.",
-    imageUrl: "/images/chefs/chef-2.png",
+    imageUrl: "/images/chefs/chef2.png",
     social: {
       facebook: "#",
       instagram: "#",
@@ -39,7 +39,7 @@ const CHEFS_DATA = [
     experience: "25 Years Experience",
     speciality: "Edomae Sushi & Knife Skills",
     description: "A purist dedicated to the craft, honoring centuries-old traditions to create unforgettable sushi experiences.",
-    imageUrl: "/images/chefs/chef-3.png",
+    imageUrl: "/images/chefs/chef3.png",
     social: {
       facebook: "#",
       instagram: "#",
@@ -53,7 +53,7 @@ const CHEFS_DATA = [
     experience: "15 Years Experience",
     speciality: "Sauce Making & Gastronomy",
     description: "Elevating rustic French classics into Michelin-worthy masterpieces with unparalleled attention to detail.",
-    imageUrl: "/images/chefs/chef-4.png",
+    imageUrl: "/images/chefs/chef4.png",
     social: {
       facebook: "#",
       instagram: "#",
@@ -67,7 +67,7 @@ const CHEFS_DATA = [
     experience: "10 Years Experience",
     speciality: "Flavor Profiling & Fermentation",
     description: "A rising star bringing bold, complex flavor profiles and innovative preservation techniques to our menu.",
-    imageUrl: "/images/chefs/chef-5.png",
+    imageUrl: "/images/chefs/chef5.png",
     social: {
       facebook: "#",
       instagram: "#",
@@ -81,7 +81,7 @@ const CHEFS_DATA = [
     experience: "14 Years Experience",
     speciality: "Open-fire Cooking & Dry Aging",
     description: "Mastering the primal art of fire, coaxing extraordinary flavors from the finest cuts of meat and vegetables.",
-    imageUrl: "/images/chefs/chef-6.png",
+    imageUrl: "/images/chefs/chef6.png",
     social: {
       facebook: "#",
       instagram: "#",
