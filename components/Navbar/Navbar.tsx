@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logoImg from "@/public/branding/logo.png";
 import { AnimatedElement } from "../Hero/AnimatedElement";
 
 export const Navbar = () => {
@@ -19,7 +18,7 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const sections = ["hero", "about", "menu", "chefs", "contact"];
+    const sections = ["hero", "menu", "chefs", "gallery", "about", "contact"];
     const observers = new Map();
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -83,11 +82,11 @@ export const Navbar = () => {
 
   const navItems = [
     { name: "Home", id: "hero" },
-    { name: "About", id: "about" },
     { name: "Menu", id: "menu" },
     { name: "Chefs", id: "chefs" },
     { name: "Gallery", id: "gallery" },
-    { name: "Testimonials", id: "testimonials" },
+    { name: "About", id: "about" },
+    { name: "Contact", id: "contact" },
   ];
 
   return (
@@ -103,7 +102,7 @@ export const Navbar = () => {
         <div className="flex-shrink-0">
           <Link href="#hero" onClick={(e) => handleClick(e, "hero")} className="outline-none">
             <Image 
-              src={logoImg} 
+              src="/branding/logo.png" 
               alt="Aster Café" 
               width={isScrolled ? 140 : 170} 
               height={isScrolled ? 35 : 42} 

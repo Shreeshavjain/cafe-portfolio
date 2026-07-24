@@ -3,6 +3,9 @@ import { Hero } from "@/components/Hero/Hero";
 import { SignatureSection } from "@/components/Signature/SignatureSection";
 import { MenuPreviewSection } from "@/components/MenuPreview/MenuPreviewSection";
 import { ChefsSection } from "@/components/Chefs/ChefsSection";
+import { GallerySection } from "@/components/Gallery/GallerySection";
+import { AboutSection } from "@/components/About/AboutSection";
+import { ContactSection } from "@/components/Contact/ContactSection";
 import { Footer } from "@/components/Footer/Footer";
 
 export default function Home() {
@@ -11,31 +14,13 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 w-full">
         <Hero />
-        
         <SignatureSection />
-        
-        {/* Prepared Architecture for future sections */}
-        <div id="about" className="scroll-mt-20">
-          {/* <AboutSection /> */}
-        </div>
-
         <MenuPreviewSection />
-        
         <ChefsSection />
-
-        <div id="gallery" className="scroll-mt-20">
-          {/* <GallerySection /> */}
-        </div>
-
-        <div id="testimonials" className="scroll-mt-20">
-          {/* <TestimonialsSection /> */}
-        </div>
-
-        <div id="contact" className="scroll-mt-20">
-          {/* <ContactSection /> */}
-        </div>
+        <GallerySection />
+        <AboutSection />
+        <ContactSection />
       </main>
-      
       <Footer />
     </div>
   );

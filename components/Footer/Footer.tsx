@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import logoImg from "@/public/branding/logo.png";
 
 export function Footer() {
   return (
@@ -10,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col items-center md:items-start space-y-6">
           <Link href="/">
             <Image 
-              src={logoImg} 
+              src="/branding/logo.png" 
               alt="Aster Café" 
               width={160} 
               height={40} 
